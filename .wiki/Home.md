@@ -6,15 +6,15 @@ This package provides `UaqCalendar` and `FcnaCalendar` as plug-in calendar objec
 
 ## Pages
 
-- [Home](Home) — you are here
-- [API Reference](API-Reference) — full method signatures and return types
-- [Architecture](Architecture) — design decisions, protocol internals, arithmetic strategy
+- [Home](Home): you are here
+- [API Reference](API-Reference): full method signatures and return types
+- [Architecture](Architecture): design decisions, protocol internals, arithmetic strategy
 
 ## Quick links
 
 - [GitHub repository](https://github.com/acamarata/temporal-hijri)
 - [npm package](https://www.npmjs.com/package/temporal-hijri)
-- [hijri-core](https://github.com/acamarata/hijri-core) — the underlying calendar engine
+- [hijri-core](https://github.com/acamarata/hijri-core): the underlying calendar engine
 
 ## Calendar systems
 
@@ -27,7 +27,7 @@ This package provides `UaqCalendar` and `FcnaCalendar` as plug-in calendar objec
 
 - Node.js 20+
 - `hijri-core ^1.0.0` (peer dependency)
-- `@js-temporal/polyfill ^0.4.0` (optional peer dependency — needed if native `Temporal` is unavailable)
+- `@js-temporal/polyfill ^0.4.0` (optional peer dependency, needed if native `Temporal` is unavailable)
 
 ---
 

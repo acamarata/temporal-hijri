@@ -10,8 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `HijriCalendar` base class implementing the TC39 Temporal Calendar Protocol
-- `UaqCalendar` — Umm al-Qura calendar (table-driven, 1318-1500 AH coverage)
-- `FcnaCalendar` — FCNA/ISNA calendar (astronomical new moon calculation via Meeus)
+- `UaqCalendar`: Umm al-Qura calendar (table-driven, 1318-1500 AH coverage)
+- `FcnaCalendar`: FCNA/ISNA calendar (astronomical new moon calculation via Meeus)
 - `uaqCalendar` and `fcnaCalendar` convenience singletons
 - Full Temporal protocol: `year`, `month`, `monthCode`, `day`, `daysInMonth`, `daysInYear`, `monthsInYear`, `inLeapYear`, `dayOfWeek`, `dayOfYear`, `weekOfYear`, `daysInWeek`, `dateFromFields`, `yearMonthFromFields`, `monthDayFromFields`, `dateAdd`, `dateUntil`, `mergeFields`, `toString`
 - Dual CJS and ESM builds with TypeScript declarations

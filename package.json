@@ -56,7 +56,7 @@
   "devDependencies": {
     "@js-temporal/polyfill": "^0.4.4",
     "@types/node": "^22.0.0",
-    "hijri-core": "file:../hijri-core",
+    "hijri-core": "^1.0.0",
     "tsup": "^8.0.0",
     "typescript": "^5.5.0"
   },

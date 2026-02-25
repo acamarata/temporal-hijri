@@ -175,7 +175,7 @@ The package ships dual CJS/ESM builds with full `.d.ts` and `.d.mts` declaration
 
 - Node.js 20, 22, 24
 - Any bundler supporting `exports` field (`Vite`, `Webpack 5`, `Rollup`, `esbuild`)
-- ESM (`import`) and CommonJS (`require`) — both provided
+- ESM (`import`) and CommonJS (`require`): both provided
 - No native `Temporal` required: works entirely with `@js-temporal/polyfill`
 
 ---
@@ -188,9 +188,9 @@ Full reference, architecture notes, and algorithmic detail in the [wiki](https:/
 
 ## Related
 
-- [hijri-core](https://github.com/acamarata/hijri-core) — the zero-dependency Hijri engine powering this package
-- [luxon-hijri](https://github.com/acamarata/luxon-hijri) — Hijri/Gregorian conversion for Luxon
-- [pray-calc](https://github.com/acamarata/pray-calc) — Islamic prayer times
+- [hijri-core](https://github.com/acamarata/hijri-core): zero-dependency Hijri engine powering this package
+- [luxon-hijri](https://github.com/acamarata/luxon-hijri): Hijri/Gregorian conversion for Luxon
+- [pray-calc](https://github.com/acamarata/pray-calc): Islamic prayer times
 
 ---
 

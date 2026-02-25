@@ -3,9 +3,8 @@ export { UaqCalendar } from './calendars/UaqCalendar';
 export { FcnaCalendar } from './calendars/FcnaCalendar';
 
 export type { HijriDate, CalendarEngine, ConversionOptions } from 'hijri-core';
-export type { HijriCalendarOptions } from './types';
 
-// Convenience singletons — ready to use without instantiation.
+// Pre-built singletons. Import and use directly; no need to instantiate.
 import { UaqCalendar } from './calendars/UaqCalendar';
 import { FcnaCalendar } from './calendars/FcnaCalendar';
 

@@ -1,7 +1,7 @@
 import { Temporal } from '@js-temporal/polyfill';
 import type { CalendarEngine } from 'hijri-core';
 
-type DateUnit = 'year' | 'years' | 'month' | 'months' | 'week' | 'weeks' | 'day' | 'days' | 'auto';
+type DateUnit = 'year' | 'years' | 'month' | 'months' | 'week' | 'weeks' | 'day' | 'days';
 
 /**
  * Base class implementing the TC39 Temporal Calendar Protocol for Hijri calendars.
@@ -146,6 +146,7 @@ export class HijriCalendar {
     return total;
   }
 
+  /** Hijri week number counted from day 1 of Muharram (day 1-7 = week 1). No ISO week alignment. */
   weekOfYear(date: Temporal.PlainDate): number {
     return Math.ceil(this.dayOfYear(date) / 7);
   }
@@ -163,6 +164,11 @@ export class HijriCalendar {
     return this.fromHijri(fields.year, fields.month, fields.day);
   }
 
+  /**
+   * ISO-anchored PlainYearMonth per the Temporal Calendar Protocol.
+   * The resulting PlainYearMonth stores ISO coordinates internally, representing
+   * the Hijri month that starts on that ISO year/month.
+   */
   yearMonthFromFields(
     fields: { year: number; month: number },
     _options?: { overflow?: 'constrain' | 'reject' }
@@ -174,6 +180,11 @@ export class HijriCalendar {
     });
   }
 
+  /**
+   * ISO-anchored PlainMonthDay per the Temporal Calendar Protocol.
+   * Reference year 1444 is intentional: it is a recent, well-covered UAQ year
+   * used to anchor the ISO coordinates when no year is supplied.
+   */
   monthDayFromFields(
     fields: { month: number; day: number; year?: number },
     _options?: { overflow?: 'constrain' | 'reject' }

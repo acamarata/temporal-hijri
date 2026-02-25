@@ -4,7 +4,7 @@
 
 The TC39 Temporal proposal (Stage 3, actively shipping in browsers) replaces the legacy `Date` object with a family of types: `PlainDate`, `PlainTime`, `PlainDateTime`, `ZonedDateTime`, `Instant`, and more. Central to its design is an extensible calendar system.
 
-A `Temporal.PlainDate` always stores its fields (year, month, day) in terms of a specific calendar. The ISO 8601 (Gregorian) calendar is the default. Custom calendars implement an interface — informally called the Temporal Calendar Protocol — that lets the `PlainDate` compute calendar-specific values from those fields, perform arithmetic, and convert between calendar systems.
+A `Temporal.PlainDate` always stores its fields (year, month, day) in terms of a specific calendar. The ISO 8601 (Gregorian) calendar is the default. Custom calendars implement an interface (informally called the Temporal Calendar Protocol) that lets the `PlainDate` compute calendar-specific values from those fields, perform arithmetic, and convert between calendar systems.
 
 `temporal-hijri` implements this protocol for the Hijri (Islamic) calendar.
 
@@ -26,7 +26,7 @@ mergeFields(fields, additionalFields)
 toString()
 ```
 
-`HijriCalendar` implements all of these. The key challenge is that `Temporal.PlainDate` stores ISO coordinates (Gregorian year/month/day), while the methods must return Hijri coordinates — and `dateFromFields` must do the reverse.
+`HijriCalendar` implements all of these. The key challenge is that `Temporal.PlainDate` stores ISO coordinates (Gregorian year/month/day), while the methods must return Hijri coordinates. `dateFromFields` does the reverse.
 
 ## Coordinate Bridging
 
@@ -49,7 +49,7 @@ The inverse path:
 
 ### Date object construction
 
-The UAQ engine reads local date components (`getFullYear`, `getMonth`, `getDate`). To ensure the local date always matches the intended calendar date — regardless of the host's timezone — `toHijri()` uses the local `Date` constructor: `new Date(year, month - 1, day)`. This avoids the UTC-to-local shift that would occur with `Date.UTC`.
+The UAQ engine reads local date components (`getFullYear`, `getMonth`, `getDate`). To ensure the local date always matches the intended calendar date regardless of the host's timezone, `toHijri()` uses the local `Date` constructor: `new Date(year, month - 1, day)`. This avoids the UTC-to-local shift that would occur with `Date.UTC`.
 
 The FCNA engine reads UTC components for its astronomical calculations. The UTC-local discrepancy is at most one day, which falls within the tolerance of FCNA's calculation window.
 
@@ -57,7 +57,7 @@ The FCNA engine reads UTC components for its astronomical calculations. The UTC-
 
 Adding a duration to a Hijri date requires different handling for different duration components:
 
-- **Years and months** must be applied in Hijri space. Adding "1 month" to 1 Ramadan should yield 1 Shawwal — not a fixed 30-day offset. The Hijri calendar has months of 29 and 30 days in no fixed pattern, so month arithmetic must account for actual month lengths.
+- **Years and months** must be applied in Hijri space. Adding "1 month" to 1 Ramadan should yield 1 Shawwal, not a fixed 30-day offset. The Hijri calendar has months of 29 and 30 days in no fixed pattern, so month arithmetic must account for actual month lengths.
 
 - **Days and weeks** can be applied in ISO (Gregorian) space after the Hijri-space year/month addition. Adding 7 days means exactly 7 days, and ISO arithmetic handles that correctly.
 
@@ -72,7 +72,7 @@ The implementation:
 6. Apply the day and week delta with ISO PlainDate.add().
 ```
 
-Clamping (step 4) follows the Temporal specification's "constrain" overflow behavior. Adding 1 month to 30 Rajab (a 30-day month) where Shaban is 29 days would yield 30 Shaban — instead, the result is clamped to 29 Shaban.
+Clamping (step 4) follows the Temporal specification's "constrain" overflow behavior. Adding 1 month to 30 Rajab (a 30-day month) where Shaban is 29 days would yield 30 Shaban. The result is clamped to 29 Shaban.
 
 ## dateUntil: Difference Strategy
 
@@ -107,7 +107,7 @@ hijri-core provides:
 - Built-in UAQ engine (table-driven, Hijri years 1318-1500)
 - Built-in FCNA engine (Meeus Chapter 49 astronomical calculations)
 
-`temporal-hijri` is a pure adapter layer. It does not implement any calendar arithmetic itself — it translates between the Temporal protocol and hijri-core's engine interface.
+`temporal-hijri` is a pure adapter layer. It does not implement any calendar arithmetic itself. It translates between the Temporal protocol and hijri-core's engine interface.
 
 ## Build Output
 
