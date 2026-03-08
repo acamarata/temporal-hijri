@@ -113,12 +113,12 @@ hijri-core provides:
 
 The package ships two formats from a single TypeScript source:
 
-| File | Format | Usage |
-|---|---|---|
-| `dist/index.mjs` | ESM | `import { uaqCalendar } from 'temporal-hijri'` |
-| `dist/index.cjs` | CommonJS | `const { uaqCalendar } = require('temporal-hijri')` |
-| `dist/index.d.ts` | Type declarations (CJS) | TypeScript + CJS |
-| `dist/index.d.mts` | Type declarations (ESM) | TypeScript + ESM |
+| File               | Format                  | Usage                                               |
+| ------------------ | ----------------------- | --------------------------------------------------- |
+| `dist/index.mjs`   | ESM                     | `import { uaqCalendar } from 'temporal-hijri'`      |
+| `dist/index.cjs`   | CommonJS                | `const { uaqCalendar } = require('temporal-hijri')` |
+| `dist/index.d.ts`  | Type declarations (CJS) | TypeScript + CJS                                    |
+| `dist/index.d.mts` | Type declarations (ESM) | TypeScript + ESM                                    |
 
 Both `hijri-core` and `@js-temporal/polyfill` are declared `external` in the build config and listed as peer dependencies. They are not bundled.
 

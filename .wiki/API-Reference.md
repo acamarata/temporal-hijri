@@ -5,16 +5,16 @@
 ```typescript
 // Classes
 export { HijriCalendar } from 'temporal-hijri';
-export { UaqCalendar }   from 'temporal-hijri';
-export { FcnaCalendar }  from 'temporal-hijri';
+export { UaqCalendar } from 'temporal-hijri';
+export { FcnaCalendar } from 'temporal-hijri';
 
 // Singletons
-export { uaqCalendar }  from 'temporal-hijri'; // new UaqCalendar()
+export { uaqCalendar } from 'temporal-hijri'; // new UaqCalendar()
 export { fcnaCalendar } from 'temporal-hijri'; // new FcnaCalendar()
 
 // Types (re-exported from hijri-core)
 export type { HijriDate, ConversionOptions } from 'temporal-hijri';
-export type { HijriCalendarOptions }         from 'temporal-hijri';
+export type { HijriCalendarOptions } from 'temporal-hijri';
 ```
 
 ---
@@ -36,7 +36,7 @@ Accepts any engine registered via hijri-core's `registerCalendar()`. The calenda
 ## `UaqCalendar`
 
 ```typescript
-new UaqCalendar()
+new UaqCalendar();
 ```
 
 Wraps the `uaq` engine from hijri-core. Calendar ID: `"hijri-uaq"`.
@@ -46,7 +46,7 @@ Wraps the `uaq` engine from hijri-core. Calendar ID: `"hijri-uaq"`.
 ## `FcnaCalendar`
 
 ```typescript
-new FcnaCalendar()
+new FcnaCalendar();
 ```
 
 Wraps the `fcna` engine from hijri-core. Calendar ID: `"hijri-fcna"`.
@@ -59,38 +59,38 @@ All methods are available on `HijriCalendar`, `UaqCalendar`, and `FcnaCalendar`.
 
 ### Field accessors
 
-| Method | Signature | Returns | Notes |
-|---|---|---|---|
-| `year` | `(date: PlainDate) => number` | Hijri year | |
-| `month` | `(date: PlainDate) => number` | Hijri month (1-12) | |
-| `monthCode` | `(date: PlainDate) => string` | `"M01"` – `"M12"` | Zero-padded |
-| `day` | `(date: PlainDate) => number` | Day of month (1-29/30) | |
+| Method      | Signature                     | Returns                | Notes       |
+| ----------- | ----------------------------- | ---------------------- | ----------- |
+| `year`      | `(date: PlainDate) => number` | Hijri year             |             |
+| `month`     | `(date: PlainDate) => number` | Hijri month (1-12)     |             |
+| `monthCode` | `(date: PlainDate) => string` | `"M01"` – `"M12"`      | Zero-padded |
+| `day`       | `(date: PlainDate) => number` | Day of month (1-29/30) |             |
 
 ### Year and month metrics
 
-| Method | Signature | Returns | Notes |
-|---|---|---|---|
-| `daysInMonth` | `(date: PlainDate) => number` | 29 or 30 | Varies by month and calendar |
-| `daysInYear` | `(date: PlainDate) => number` | 354 or 355 | Sum of all 12 months |
-| `monthsInYear` | `(date: PlainDate) => number` | Always 12 | |
-| `inLeapYear` | `(date: PlainDate) => boolean` | `true` if 355-day year | |
+| Method         | Signature                      | Returns                | Notes                        |
+| -------------- | ------------------------------ | ---------------------- | ---------------------------- |
+| `daysInMonth`  | `(date: PlainDate) => number`  | 29 or 30               | Varies by month and calendar |
+| `daysInYear`   | `(date: PlainDate) => number`  | 354 or 355             | Sum of all 12 months         |
+| `monthsInYear` | `(date: PlainDate) => number`  | Always 12              |                              |
+| `inLeapYear`   | `(date: PlainDate) => boolean` | `true` if 355-day year |                              |
 
 ### Week and day position
 
-| Method | Signature | Returns | Notes |
-|---|---|---|---|
-| `dayOfWeek` | `(date: PlainDate) => number` | 1-7 (Mon=1, Sun=7) | ISO weekday |
-| `dayOfYear` | `(date: PlainDate) => number` | 1-354 or 1-355 | Within the Hijri year |
-| `weekOfYear` | `(date: PlainDate) => number` | 1-51 | `ceil(dayOfYear / 7)` |
-| `daysInWeek` | `(date: PlainDate) => number` | Always 7 | |
+| Method       | Signature                     | Returns            | Notes                 |
+| ------------ | ----------------------------- | ------------------ | --------------------- |
+| `dayOfWeek`  | `(date: PlainDate) => number` | 1-7 (Mon=1, Sun=7) | ISO weekday           |
+| `dayOfYear`  | `(date: PlainDate) => number` | 1-354 or 1-355     | Within the Hijri year |
+| `weekOfYear` | `(date: PlainDate) => number` | 1-51               | `ceil(dayOfYear / 7)` |
+| `daysInWeek` | `(date: PlainDate) => number` | Always 7           |                       |
 
 ### Construction from fields
 
-| Method | Signature | Returns |
-|---|---|---|
-| `dateFromFields` | `(fields: {year, month, day}, options?) => PlainDate` | ISO `PlainDate` |
-| `yearMonthFromFields` | `(fields: {year, month}, options?) => PlainYearMonth` | ISO `PlainYearMonth` |
-| `monthDayFromFields` | `(fields: {month, day, year?}, options?) => PlainMonthDay` | ISO `PlainMonthDay` |
+| Method                | Signature                                                  | Returns              |
+| --------------------- | ---------------------------------------------------------- | -------------------- |
+| `dateFromFields`      | `(fields: {year, month, day}, options?) => PlainDate`      | ISO `PlainDate`      |
+| `yearMonthFromFields` | `(fields: {year, month}, options?) => PlainYearMonth`      | ISO `PlainYearMonth` |
+| `monthDayFromFields`  | `(fields: {month, day, year?}, options?) => PlainMonthDay` | ISO `PlainMonthDay`  |
 
 `monthDayFromFields` uses year 1444 AH as a default reference if no year is supplied.
 
@@ -124,10 +124,10 @@ Computes the difference between two dates. When `largestUnit` is `'years'` or `'
 
 ### Other
 
-| Method | Signature | Returns |
-|---|---|---|
+| Method        | Signature                              | Returns             |
+| ------------- | -------------------------------------- | ------------------- |
 | `mergeFields` | `(fields, additionalFields) => Record` | Merged field object |
-| `toString` | `() => string` | Calendar identifier |
+| `toString`    | `() => string`                         | Calendar identifier |
 
 ---
 

@@ -18,10 +18,10 @@ This package provides `UaqCalendar` and `FcnaCalendar` as plug-in calendar objec
 
 ## Calendar systems
 
-| Calendar | ID | Description |
-|---|---|---|
-| Umm al-Qura | `hijri-uaq` | Official Saudi calendar, table-driven, covers 1318-1500 AH |
-| FCNA/ISNA | `hijri-fcna` | North American standard, astronomical new moon calculation |
+| Calendar    | ID           | Description                                                |
+| ----------- | ------------ | ---------------------------------------------------------- |
+| Umm al-Qura | `hijri-uaq`  | Official Saudi calendar, table-driven, covers 1318-1500 AH |
+| FCNA/ISNA   | `hijri-fcna` | North American standard, astronomical new moon calculation |
 
 ## Requirements
 
