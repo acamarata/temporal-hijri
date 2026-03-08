@@ -7,7 +7,7 @@ export default defineConfig({
   clean: true,
   outDir: 'dist',
   splitting: false,
-  sourcemap: true,
+  sourcemap: false,
   target: 'es2020',
   platform: 'node',
   external: ['hijri-core', '@js-temporal/polyfill'],

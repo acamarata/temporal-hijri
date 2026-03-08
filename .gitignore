@@ -9,5 +9,15 @@ dist/
 
 # AI agent directories
 .aider*
+.copilot/
 .cursor/
 .continue/
+.windsurf/
+.codeium/
+.tabnine/
+.vscode/*
+.idea/
+.codex/
+.aider/
+.aider.chat.history.md
+.gemini/

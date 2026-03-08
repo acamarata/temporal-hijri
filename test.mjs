@@ -5,24 +5,10 @@
  * Reference point: 2023-03-23 = 1 Ramadan 1444 AH (both UAQ and FCNA agree).
  */
 
+import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
 import { Temporal } from '@js-temporal/polyfill';
 import { UaqCalendar, FcnaCalendar, uaqCalendar, fcnaCalendar } from './dist/index.mjs';
-
-let passed = 0;
-let failed = 0;
-const total = 18;
-
-function test(name, fn) {
-  try {
-    fn();
-    console.log(`[${name}]... PASS`);
-    passed++;
-  } catch (err) {
-    console.error(`[${name}]... FAIL: ${err.message}`);
-    failed++;
-  }
-}
 
 // Reference date: 2023-03-23 = 1 Ramadan 1444 AH
 const isoRamadan = Temporal.PlainDate.from('2023-03-23');
@@ -33,119 +19,247 @@ const isoLeapYear = Temporal.PlainDate.from('2021-08-09');
 
 // ── 1. Class exports ──────────────────────────────────────────────────────────
 
-test('UaqCalendar class export', () => {
-  assert(UaqCalendar, 'UaqCalendar should be exported');
-  const cal = new UaqCalendar();
-  assert(cal instanceof UaqCalendar, 'UaqCalendar should be instantiable');
-});
+describe('Class exports', () => {
+  it('UaqCalendar class export', () => {
+    assert(UaqCalendar, 'UaqCalendar should be exported');
+    const cal = new UaqCalendar();
+    assert(cal instanceof UaqCalendar, 'UaqCalendar should be instantiable');
+  });
 
-test('FcnaCalendar class export', () => {
-  assert(FcnaCalendar, 'FcnaCalendar should be exported');
-  const cal = new FcnaCalendar();
-  assert(cal instanceof FcnaCalendar, 'FcnaCalendar should be instantiable');
+  it('FcnaCalendar class export', () => {
+    assert(FcnaCalendar, 'FcnaCalendar should be exported');
+    const cal = new FcnaCalendar();
+    assert(cal instanceof FcnaCalendar, 'FcnaCalendar should be instantiable');
+  });
 });
 
 // ── 2. Calendar IDs ───────────────────────────────────────────────────────────
 
-test('uaqCalendar.id', () => {
-  assert.equal(uaqCalendar.id, 'hijri-uaq');
-});
+describe('Calendar IDs', () => {
+  it('uaqCalendar.id', () => {
+    assert.equal(uaqCalendar.id, 'hijri-uaq');
+  });
 
-test('fcnaCalendar.id', () => {
-  assert.equal(fcnaCalendar.id, 'hijri-fcna');
+  it('fcnaCalendar.id', () => {
+    assert.equal(fcnaCalendar.id, 'hijri-fcna');
+  });
 });
 
 // ── 3. Field accessors on 1 Ramadan 1444 (2023-03-23) ────────────────────────
 
-test('uaqCalendar.year(2023-03-23) = 1444', () => {
-  assert.equal(uaqCalendar.year(isoRamadan), 1444);
-});
+describe('Field accessors (UAQ, 1 Ramadan 1444)', () => {
+  it('year = 1444', () => {
+    assert.equal(uaqCalendar.year(isoRamadan), 1444);
+  });
 
-test('uaqCalendar.month(2023-03-23) = 9 (Ramadan)', () => {
-  assert.equal(uaqCalendar.month(isoRamadan), 9);
-});
+  it('month = 9 (Ramadan)', () => {
+    assert.equal(uaqCalendar.month(isoRamadan), 9);
+  });
 
-test('uaqCalendar.day(2023-03-23) = 1', () => {
-  assert.equal(uaqCalendar.day(isoRamadan), 1);
-});
+  it('day = 1', () => {
+    assert.equal(uaqCalendar.day(isoRamadan), 1);
+  });
 
-test('uaqCalendar.monthCode(2023-03-23) = "M09"', () => {
-  assert.equal(uaqCalendar.monthCode(isoRamadan), 'M09');
-});
+  it('monthCode = "M09"', () => {
+    assert.equal(uaqCalendar.monthCode(isoRamadan), 'M09');
+  });
 
-test('uaqCalendar.daysInMonth(2023-03-23) = 29 (Ramadan 1444 is 29 days)', () => {
-  assert.equal(uaqCalendar.daysInMonth(isoRamadan), 29);
-});
+  it('daysInMonth = 29 (Ramadan 1444)', () => {
+    assert.equal(uaqCalendar.daysInMonth(isoRamadan), 29);
+  });
 
-test('uaqCalendar.monthsInYear(2023-03-23) = 12', () => {
-  assert.equal(uaqCalendar.monthsInYear(isoRamadan), 12);
-});
+  it('monthsInYear = 12', () => {
+    assert.equal(uaqCalendar.monthsInYear(isoRamadan), 12);
+  });
 
-test('uaqCalendar.daysInWeek(2023-03-23) = 7', () => {
-  assert.equal(uaqCalendar.daysInWeek(isoRamadan), 7);
-});
+  it('daysInWeek = 7', () => {
+    assert.equal(uaqCalendar.daysInWeek(isoRamadan), 7);
+  });
 
-// 2023-03-23 is a Thursday. ISO weekday: 1=Mon, ..., 4=Thu, ..., 7=Sun.
-test('uaqCalendar.dayOfWeek(2023-03-23) = 4 (Thursday)', () => {
-  assert.equal(uaqCalendar.dayOfWeek(isoRamadan), 4);
-});
+  it('dayOfWeek = 4 (Thursday)', () => {
+    assert.equal(uaqCalendar.dayOfWeek(isoRamadan), 4);
+  });
 
-// dayOfYear: sum of months 1-8 in 1444 + 1 (first day of month 9).
-// Months 1-8 of 1444 total 236 days, so day 237 of the year.
-test('uaqCalendar.dayOfYear(2023-03-23) = 237', () => {
-  assert.equal(uaqCalendar.dayOfYear(isoRamadan), 237);
+  it('dayOfYear = 237', () => {
+    assert.equal(uaqCalendar.dayOfYear(isoRamadan), 237);
+  });
 });
 
 // ── 4. dateFromFields ─────────────────────────────────────────────────────────
 
-test('uaqCalendar.dateFromFields({year:1444, month:9, day:1}) = 2023-03-23', () => {
-  const result = uaqCalendar.dateFromFields({ year: 1444, month: 9, day: 1 });
-  assert.equal(result.toString(), '2023-03-23');
+describe('dateFromFields', () => {
+  it('dateFromFields({year:1444, month:9, day:1}) = 2023-03-23', () => {
+    const result = uaqCalendar.dateFromFields({ year: 1444, month: 9, day: 1 });
+    assert.equal(result.toString(), '2023-03-23');
+  });
 });
 
 // ── 5. dateAdd ────────────────────────────────────────────────────────────────
 
-test('uaqCalendar.dateAdd: adding 1 month from 1 Ramadan 1444 lands on 1 Shawwal 1444', () => {
-  const oneMonth = new Temporal.Duration(0, 1, 0, 0);
-  const result = uaqCalendar.dateAdd(isoRamadan, oneMonth);
-  // 1 Shawwal 1444 = 2023-04-21
-  assert.equal(result.toString(), isoShawwal.toString());
-  // Verify the result is in Shawwal (month 10)
-  assert.equal(uaqCalendar.month(result), 10);
+describe('dateAdd', () => {
+  it('adding 1 month from 1 Ramadan 1444 lands on 1 Shawwal 1444', () => {
+    const oneMonth = new Temporal.Duration(0, 1, 0, 0);
+    const result = uaqCalendar.dateAdd(isoRamadan, oneMonth);
+    assert.equal(result.toString(), isoShawwal.toString());
+    assert.equal(uaqCalendar.month(result), 10);
+  });
+
+  it('adding 7 days from 1 Ramadan 1444', () => {
+    const sevenDays = new Temporal.Duration(0, 0, 0, 7);
+    const result = uaqCalendar.dateAdd(isoRamadan, sevenDays);
+    assert.equal(uaqCalendar.day(result), 8);
+    assert.equal(uaqCalendar.month(result), 9);
+  });
+
+  it('adding 1 week from 1 Ramadan 1444', () => {
+    const oneWeek = new Temporal.Duration(0, 0, 1, 0);
+    const result = uaqCalendar.dateAdd(isoRamadan, oneWeek);
+    assert.equal(uaqCalendar.day(result), 8);
+    assert.equal(uaqCalendar.month(result), 9);
+  });
+
+  it('adding 12 months rolls the year forward', () => {
+    const twelveMonths = new Temporal.Duration(0, 12, 0, 0);
+    const result = uaqCalendar.dateAdd(isoRamadan, twelveMonths);
+    assert.equal(uaqCalendar.year(result), 1445);
+    assert.equal(uaqCalendar.month(result), 9);
+  });
+
+  it('subtracting months via negative duration', () => {
+    const negMonth = new Temporal.Duration(0, -1, 0, 0);
+    const result = uaqCalendar.dateAdd(isoShawwal, negMonth);
+    assert.equal(uaqCalendar.month(result), 9);
+    assert.equal(uaqCalendar.year(result), 1444);
+  });
 });
 
-// ── 6. inLeapYear ─────────────────────────────────────────────────────────────
+// ── 6. dateUntil ──────────────────────────────────────────────────────────────
 
-test('uaqCalendar.inLeapYear: 1443 AH (355 days) is a leap year, 1444 AH (354) is not', () => {
-  // 2021-08-09 = 1 Muharram 1443 (355-day year)
-  assert.equal(uaqCalendar.inLeapYear(isoLeapYear), true);
-  // 2023-03-23 = in 1444 (354-day year)
-  assert.equal(uaqCalendar.inLeapYear(isoRamadan), false);
+describe('dateUntil', () => {
+  it('days between 1 Ramadan and 1 Shawwal 1444', () => {
+    const dur = uaqCalendar.dateUntil(isoRamadan, isoShawwal, { largestUnit: 'days' });
+    assert.equal(dur.days, 29);
+  });
+
+  it('months between 1 Ramadan and 1 Shawwal 1444', () => {
+    const dur = uaqCalendar.dateUntil(isoRamadan, isoShawwal, { largestUnit: 'months' });
+    assert.equal(dur.months, 1);
+    assert.equal(dur.days, 0);
+  });
+
+  it('years between dates spanning one Hijri year', () => {
+    const iso1443 = uaqCalendar.dateFromFields({ year: 1443, month: 1, day: 1 });
+    const iso1444 = uaqCalendar.dateFromFields({ year: 1444, month: 1, day: 1 });
+    const dur = uaqCalendar.dateUntil(iso1443, iso1444, { largestUnit: 'years' });
+    assert.equal(dur.years, 1);
+    assert.equal(dur.months, 0);
+    assert.equal(dur.days, 0);
+  });
+
+  it('weeks between dates', () => {
+    const dur = uaqCalendar.dateUntil(isoRamadan, isoShawwal, { largestUnit: 'weeks' });
+    assert.equal(dur.weeks, 4);
+    assert.equal(dur.days, 1);
+  });
 });
 
-// ── 7. FCNA calendar ──────────────────────────────────────────────────────────
+// ── 7. inLeapYear ─────────────────────────────────────────────────────────────
 
-// Both UAQ and FCNA agree on 1 Ramadan 1444 = 2023-03-23
-test('fcnaCalendar.year(2023-03-23) returns a valid Hijri year', () => {
-  const year = fcnaCalendar.year(isoRamadan);
-  assert(typeof year === 'number' && year > 1400, `Expected a Hijri year > 1400, got ${year}`);
+describe('inLeapYear', () => {
+  it('1443 AH (355 days) is a leap year, 1444 AH (354) is not', () => {
+    assert.equal(uaqCalendar.inLeapYear(isoLeapYear), true);
+    assert.equal(uaqCalendar.inLeapYear(isoRamadan), false);
+  });
 });
 
-// ── 8. Out-of-range error ─────────────────────────────────────────────────────
+// ── 8. FCNA calendar ──────────────────────────────────────────────────────────
 
-test('uaqCalendar.year throws RangeError for out-of-range date (1800-01-01)', () => {
-  // UAQ table covers 1318-1500 AH (Gregorian 1900-2076). 1800 is out of range.
-  const outOfRange = Temporal.PlainDate.from('1800-01-01');
-  assert.throws(
-    () => uaqCalendar.year(outOfRange),
-    (err) => err instanceof RangeError
-  );
+describe('FCNA calendar', () => {
+  it('fcnaCalendar.year(2023-03-23) returns a valid Hijri year', () => {
+    const year = fcnaCalendar.year(isoRamadan);
+    assert(typeof year === 'number' && year > 1400, `Expected a Hijri year > 1400, got ${year}`);
+  });
 });
 
-// ── Summary ───────────────────────────────────────────────────────────────────
+// ── 9. Out-of-range error ─────────────────────────────────────────────────────
 
-console.log(`\n${passed}/${total} tests passed`);
-if (failed > 0) {
-  console.error(`${failed} test(s) failed`);
-  process.exit(1);
-}
+describe('Out-of-range error', () => {
+  it('uaqCalendar.year throws RangeError for out-of-range date (1800-01-01)', () => {
+    const outOfRange = Temporal.PlainDate.from('1800-01-01');
+    assert.throws(
+      () => uaqCalendar.year(outOfRange),
+      (err) => err instanceof RangeError,
+    );
+  });
+});
+
+// ── 10. overflow option ───────────────────────────────────────────────────────
+
+describe('overflow option', () => {
+  it('dateFromFields with overflow: "constrain" clamps day', () => {
+    const result = uaqCalendar.dateFromFields(
+      { year: 1444, month: 9, day: 31 },
+      { overflow: 'constrain' },
+    );
+    assert.equal(uaqCalendar.day(result), 29);
+    assert.equal(uaqCalendar.month(result), 9);
+  });
+
+  it('dateFromFields with overflow: "reject" throws RangeError', () => {
+    assert.throws(
+      () => uaqCalendar.dateFromFields({ year: 1444, month: 9, day: 31 }, { overflow: 'reject' }),
+      (err) => err instanceof RangeError,
+    );
+  });
+
+  it('monthDayFromFields with overflow: "constrain" clamps day', () => {
+    const result = uaqCalendar.monthDayFromFields({ month: 9, day: 31 }, { overflow: 'constrain' });
+    assert.ok(result);
+  });
+
+  it('monthDayFromFields with overflow: "reject" throws RangeError', () => {
+    assert.throws(
+      () => uaqCalendar.monthDayFromFields({ month: 9, day: 31 }, { overflow: 'reject' }),
+      (err) => err instanceof RangeError,
+    );
+  });
+});
+
+// ── 11. fields() ──────────────────────────────────────────────────────────────
+
+describe('fields()', () => {
+  it('returns the input array unchanged', () => {
+    const input = ['year', 'month', 'day'];
+    const result = uaqCalendar.fields(input);
+    assert.deepEqual(result, ['year', 'month', 'day']);
+  });
+
+  it('returns an empty array for empty input', () => {
+    assert.deepEqual(uaqCalendar.fields([]), []);
+  });
+});
+
+// ── 12. yearMonthFromFields ─────────────────────────────────────────────────
+
+describe('yearMonthFromFields', () => {
+  it('creates a PlainYearMonth for Ramadan 1444', () => {
+    const result = uaqCalendar.yearMonthFromFields({ year: 1444, month: 9 });
+    assert.ok(result);
+    assert.equal(result.month, 3);
+    assert.equal(result.year, 2023);
+  });
+});
+
+// ── 13. monthDayFromFields ──────────────────────────────────────────────────
+
+describe('monthDayFromFields', () => {
+  it('creates a PlainMonthDay for 15 Ramadan (default reference year)', () => {
+    const result = uaqCalendar.monthDayFromFields({ month: 9, day: 15 });
+    assert.ok(result);
+  });
+
+  it('creates a PlainMonthDay with explicit year', () => {
+    const result = uaqCalendar.monthDayFromFields({ month: 9, day: 1, year: 1445 });
+    assert.ok(result);
+  });
+});
