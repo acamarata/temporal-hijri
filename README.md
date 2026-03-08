@@ -171,6 +171,12 @@ The package ships dual CJS/ESM builds with full `.d.ts` and `.d.mts` declaration
 
 ---
 
+## Architecture
+
+A thin adapter over [hijri-core](https://github.com/acamarata/hijri-core) that maps the Temporal Calendar Protocol to Hijri calendar engine calls. The `UaqCalendar` and `FcnaCalendar` classes implement `Temporal.CalendarProtocol` — the package itself adds no calendar math.
+
+For more detail see the [Architecture wiki page](https://github.com/acamarata/temporal-hijri/wiki/Architecture).
+
 ## Compatibility
 
 - Node.js 20, 22, 24
