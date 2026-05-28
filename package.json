@@ -1,6 +1,6 @@
 {
   "name": "temporal-hijri",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Temporal Calendar Protocol implementation for the Hijri calendar system. Supports Umm al-Qura and FCNA calendars via hijri-core.",
   "author": "Aric Camarata",
   "license": "MIT",
@@ -9,15 +9,11 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "types": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.cjs"
-      }
-    }
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
   },
   "sideEffects": false,
   "files": [
@@ -41,7 +37,8 @@
     "format:check": "prettier --check src/ test.mjs test-cjs.cjs eslint.config.mjs tsup.config.ts",
     "pretest": "tsup",
     "test": "node --test test.mjs && node --test test-cjs.cjs",
-    "prepublishOnly": "tsup"
+    "prepublishOnly": "tsup",
+    "coverage": "c8 --reporter=lcov --reporter=text node --test"
   },
   "keywords": [
     "temporal",
@@ -87,5 +84,6 @@
   "homepage": "https://github.com/acamarata/temporal-hijri#readme",
   "bugs": {
     "url": "https://github.com/acamarata/temporal-hijri/issues"
-  }
+  },
+  "type": "module"
 }
