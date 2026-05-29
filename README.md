@@ -4,7 +4,7 @@
 
 # temporal-hijri
 
-Temporal Calendar Protocol implementation for the Hijri calendar. Works with the TC39 Temporal proposal and `@js-temporal/polyfill`.
+Temporal Calendar Protocol implementation for the Hijri calendar. Works with the TC39 Temporal proposal (Stage 3) and `@js-temporal/polyfill`.
 
 Provides `UaqCalendar` (Umm al-Qura) and `FcnaCalendar` (FCNA/ISNA) as plug-in calendars for `Temporal.PlainDate` and related types. The underlying conversion logic comes from [hijri-core](https://github.com/acamarata/hijri-core), a zero-dependency Hijri engine with table-driven UAQ data and astronomical FCNA calculations.
 
