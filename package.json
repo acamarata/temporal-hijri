@@ -1,6 +1,6 @@
 {
   "name": "temporal-hijri",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Temporal Calendar Protocol implementation for the Hijri calendar system. Supports Umm al-Qura and FCNA calendars via hijri-core.",
   "author": "Aric Camarata",
   "license": "MIT",

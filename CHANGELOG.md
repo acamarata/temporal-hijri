@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.2] - 2026-05-30
+
+### Added
+- TSDoc comments on all public `HijriCalendar` methods
+
+### Changed
+- README condensed; quickstart trimmed to essential examples
+- CI: corepack before setup-node, prettier scoped to src/, d.mts emitted via postbuild
+- Adopt shared config packages (@acamarata/eslint-config, @acamarata/prettier-config, @acamarata/tsconfig)
+
 ## [1.0.1] - 2026-05-28
 
 ### Changed
