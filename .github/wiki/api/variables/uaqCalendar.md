@@ -8,4 +8,4 @@
 
 > `const` **uaqCalendar**: [`UaqCalendar`](../classes/UaqCalendar.md)
 
-Defined in: [src/index.ts:11](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/index.ts#L11)
+Defined in: [src/index.ts:11](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/index.ts#L11)

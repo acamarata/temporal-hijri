@@ -6,7 +6,7 @@
 
 # Class: HijriCalendar
 
-Defined in: [src/calendars/HijriCalendar.ts:57](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L57)
+Defined in: [src/calendars/HijriCalendar.ts:57](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L57)
 
 Base class implementing the TC39 Temporal Calendar Protocol for Hijri calendars.
 
@@ -32,7 +32,7 @@ Arithmetic strategy for dateAdd():
 
 > **new HijriCalendar**(`engine`): `HijriCalendar`
 
-Defined in: [src/calendars/HijriCalendar.ts:61](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L61)
+Defined in: [src/calendars/HijriCalendar.ts:61](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L61)
 
 #### Parameters
 
@@ -50,7 +50,7 @@ Defined in: [src/calendars/HijriCalendar.ts:61](https://github.com/acamarata/tem
 
 > `readonly` **id**: `string`
 
-Defined in: [src/calendars/HijriCalendar.ts:59](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L59)
+Defined in: [src/calendars/HijriCalendar.ts:59](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L59)
 
 ## Methods
 
@@ -58,7 +58,7 @@ Defined in: [src/calendars/HijriCalendar.ts:59](https://github.com/acamarata/tem
 
 > **dateAdd**(`date`, `duration`, `_options?`): `PlainDate`
 
-Defined in: [src/calendars/HijriCalendar.ts:346](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L346)
+Defined in: [src/calendars/HijriCalendar.ts:346](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L346)
 
 Add a duration to a Hijri date.
 
@@ -97,7 +97,7 @@ adjustment, it is clamped to the last valid day of that month.
 
 > **dateFromFields**(`fields`, `options?`): `PlainDate`
 
-Defined in: [src/calendars/HijriCalendar.ts:279](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L279)
+Defined in: [src/calendars/HijriCalendar.ts:279](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L279)
 
 #### Parameters
 
@@ -131,7 +131,7 @@ Defined in: [src/calendars/HijriCalendar.ts:279](https://github.com/acamarata/te
 
 > **dateUntil**(`one`, `two`, `options?`): `Duration`
 
-Defined in: [src/calendars/HijriCalendar.ts:384](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L384)
+Defined in: [src/calendars/HijriCalendar.ts:384](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L384)
 
 Compute the difference between two Hijri dates.
 
@@ -165,7 +165,7 @@ is days or weeks. Year/month differences require a Hijri-space calculation.
 
 > **day**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:169](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L169)
+Defined in: [src/calendars/HijriCalendar.ts:169](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L169)
 
 Returns the day of the Hijri month (1-29 or 1-30).
 
@@ -189,7 +189,7 @@ Day of month within the Hijri calendar.
 
 > **dayOfWeek**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:234](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L234)
+Defined in: [src/calendars/HijriCalendar.ts:234](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L234)
 
 ISO weekday: 1 = Monday, 7 = Sunday.
 PlainDate.dayOfWeek on an ISO-calendar date already gives ISO weekday,
@@ -211,7 +211,7 @@ so no conversion is needed.
 
 > **dayOfYear**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:242](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L242)
+Defined in: [src/calendars/HijriCalendar.ts:242](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L242)
 
 Day within the Hijri year. Accumulates full months before the current one,
 then adds the day-of-month offset.
@@ -232,7 +232,7 @@ then adds the day-of-month offset.
 
 > **daysInMonth**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:184](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L184)
+Defined in: [src/calendars/HijriCalendar.ts:184](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L184)
 
 Returns the number of days in the Hijri month containing the given date.
 
@@ -259,7 +259,7 @@ A Temporal.PlainDate with ISO (Gregorian) coordinates.
 
 > **daysInWeek**(`_date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:263](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L263)
+Defined in: [src/calendars/HijriCalendar.ts:263](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L263)
 
 Returns the number of days in a week.
 
@@ -283,7 +283,7 @@ Always 7.
 
 > **daysInYear**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:193](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L193)
+Defined in: [src/calendars/HijriCalendar.ts:193](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L193)
 
 Sum all 12 month lengths for the Hijri year. Standard lunar years are 354
 days; leap years (with an added day in Dhul-Hijja) are 355 days.
@@ -304,7 +304,7 @@ days; leap years (with an added day in Dhul-Hijja) are 355 days.
 
 > **fields**(`fields`): `string`[]
 
-Defined in: [src/calendars/HijriCalendar.ts:273](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L273)
+Defined in: [src/calendars/HijriCalendar.ts:273](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L273)
 
 Return the list of fields that the calendar adds to a Temporal object.
 Non-era calendars return the input array unchanged.
@@ -325,7 +325,7 @@ Non-era calendars return the input array unchanged.
 
 > **inLeapYear**(`date`): `boolean`
 
-Defined in: [src/calendars/HijriCalendar.ts:223](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L223)
+Defined in: [src/calendars/HijriCalendar.ts:223](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L223)
 
 Returns whether the Hijri year is a leap year (355 days).
 
@@ -352,7 +352,7 @@ A Temporal.PlainDate with ISO (Gregorian) coordinates.
 
 > **mergeFields**(`fields`, `additionalFields`): `Record`\<`string`, `unknown`\>
 
-Defined in: [src/calendars/HijriCalendar.ts:414](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L414)
+Defined in: [src/calendars/HijriCalendar.ts:414](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L414)
 
 #### Parameters
 
@@ -374,7 +374,7 @@ Defined in: [src/calendars/HijriCalendar.ts:414](https://github.com/acamarata/te
 
 > **month**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:149](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L149)
+Defined in: [src/calendars/HijriCalendar.ts:149](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L149)
 
 Returns the Hijri month (1-12) for the given ISO date.
 
@@ -398,7 +398,7 @@ Month number 1 (Muharram) through 12 (Dhul-Hijja).
 
 > **monthCode**(`date`): `string`
 
-Defined in: [src/calendars/HijriCalendar.ts:158](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L158)
+Defined in: [src/calendars/HijriCalendar.ts:158](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L158)
 
 Month code per the Temporal proposal: "M01".."M12".
 Hijri months are always 1-12 (no leap/intercalary month), so the code is
@@ -420,7 +420,7 @@ simply the zero-padded month number.
 
 > **monthDayFromFields**(`fields`, `options?`): `PlainMonthDay`
 
-Defined in: [src/calendars/HijriCalendar.ts:317](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L317)
+Defined in: [src/calendars/HijriCalendar.ts:317](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L317)
 
 ISO-anchored PlainMonthDay per the Temporal Calendar Protocol.
 Reference year 1444 is intentional: it is a recent, well-covered UAQ year
@@ -458,7 +458,7 @@ used to anchor the ISO coordinates when no year is supplied.
 
 > **monthsInYear**(`_date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:210](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L210)
+Defined in: [src/calendars/HijriCalendar.ts:210](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L210)
 
 Returns the number of months in the Hijri year.
 
@@ -483,7 +483,7 @@ Always 12.
 
 > **toString**(): `string`
 
-Defined in: [src/calendars/HijriCalendar.ts:66](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L66)
+Defined in: [src/calendars/HijriCalendar.ts:66](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L66)
 
 #### Returns
 
@@ -495,7 +495,7 @@ Defined in: [src/calendars/HijriCalendar.ts:66](https://github.com/acamarata/tem
 
 > **weekOfYear**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:252](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L252)
+Defined in: [src/calendars/HijriCalendar.ts:252](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L252)
 
 Hijri week number counted from day 1 of Muharram (day 1-7 = week 1). No ISO week alignment.
 
@@ -515,7 +515,7 @@ Hijri week number counted from day 1 of Muharram (day 1-7 = week 1). No ISO week
 
 > **year**(`date`): `number`
 
-Defined in: [src/calendars/HijriCalendar.ts:139](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L139)
+Defined in: [src/calendars/HijriCalendar.ts:139](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L139)
 
 Returns the Hijri year for the given ISO date.
 
@@ -539,7 +539,7 @@ The Hijri year, e.g. 1444.
 
 > **yearMonthFromFields**(`fields`, `options?`): `PlainYearMonth`
 
-Defined in: [src/calendars/HijriCalendar.ts:294](https://github.com/acamarata/temporal-hijri/blob/cdcede1c5890a670cd9f06a043e3a796fbd69b10/src/calendars/HijriCalendar.ts#L294)
+Defined in: [src/calendars/HijriCalendar.ts:294](https://github.com/acamarata/temporal-hijri/blob/077861c7dc33e5562fb75c1defbee0f2db4e2f2a/src/calendars/HijriCalendar.ts#L294)
 
 ISO-anchored PlainYearMonth per the Temporal Calendar Protocol.
 The resulting PlainYearMonth stores ISO coordinates internally, representing
