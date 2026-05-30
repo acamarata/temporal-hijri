@@ -130,10 +130,22 @@ export class HijriCalendar {
 
   // ── Field accessors ───────────────────────────────────────────────────────
 
+  /**
+   * Returns the Hijri year for the given ISO date.
+   *
+   * @param date - A Temporal.PlainDate with ISO (Gregorian) coordinates.
+   * @returns The Hijri year, e.g. 1444.
+   */
   year(date: Temporal.PlainDate): number {
     return this.toHijri(date).hy;
   }
 
+  /**
+   * Returns the Hijri month (1-12) for the given ISO date.
+   *
+   * @param date - A Temporal.PlainDate with ISO (Gregorian) coordinates.
+   * @returns Month number 1 (Muharram) through 12 (Dhul-Hijja).
+   */
   month(date: Temporal.PlainDate): number {
     return this.toHijri(date).hm;
   }
@@ -148,12 +160,27 @@ export class HijriCalendar {
     return `M${String(hm).padStart(2, '0')}`;
   }
 
+  /**
+   * Returns the day of the Hijri month (1-29 or 1-30).
+   *
+   * @param date - A Temporal.PlainDate with ISO (Gregorian) coordinates.
+   * @returns Day of month within the Hijri calendar.
+   */
   day(date: Temporal.PlainDate): number {
     return this.toHijri(date).hd;
   }
 
   // ── Month and year metrics ─────────────────────────────────────────────────
 
+  /**
+   * Returns the number of days in the Hijri month containing the given date.
+   *
+   * Hijri months alternate between 29 and 30 days, but the exact pattern
+   * differs by calendar system (UAQ uses fixed tables; FCNA uses calculation).
+   *
+   * @param date - A Temporal.PlainDate with ISO (Gregorian) coordinates.
+   * @returns 29 or 30.
+   */
   daysInMonth(date: Temporal.PlainDate): number {
     const { hy, hm } = this.toHijri(date);
     return this.engine.daysInMonth(hy, hm);
@@ -172,10 +199,27 @@ export class HijriCalendar {
     return total;
   }
 
+  /**
+   * Returns the number of months in the Hijri year.
+   *
+   * Always 12. Unlike the Hebrew calendar, the Hijri lunar calendar has no
+   * intercalary (leap) month — only a possible extra day in Dhul-Hijja.
+   *
+   * @returns Always 12.
+   */
   monthsInYear(_date: Temporal.PlainDate): number {
     return 12;
   }
 
+  /**
+   * Returns whether the Hijri year is a leap year (355 days).
+   *
+   * Standard Hijri years have 354 days. A leap year adds one day to
+   * Dhul-Hijja (month 12), making it 355 days total.
+   *
+   * @param date - A Temporal.PlainDate with ISO (Gregorian) coordinates.
+   * @returns `true` if the year has 355 days.
+   */
   inLeapYear(date: Temporal.PlainDate): boolean {
     return this.daysInYear(date) === 355;
   }
@@ -209,6 +253,13 @@ export class HijriCalendar {
     return Math.ceil(this.dayOfYear(date) / 7);
   }
 
+  /**
+   * Returns the number of days in a week.
+   *
+   * Always 7. Required by the Temporal Calendar Protocol.
+   *
+   * @returns Always 7.
+   */
   daysInWeek(_date: Temporal.PlainDate): number {
     return 7;
   }

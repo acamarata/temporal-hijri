@@ -6,9 +6,16 @@
 
 **Examples**
 - [Basic Usage](examples/basic-usage)
+- [Scheduling Display](examples/scheduling-display)
+
+**API**
+- [HijriCalendar](api/HijriCalendar)
+- [UaqCalendar](api/UaqCalendar)
+- [FcnaCalendar](api/FcnaCalendar)
+- [Singletons](api/singletons)
+- [Full API Reference](API-Reference)
 
 **Reference**
-- [API Reference](API-Reference)
 - [Architecture](Architecture)
 - [Benchmarks](benchmarks/index)
 
