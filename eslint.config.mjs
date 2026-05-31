@@ -5,10 +5,11 @@ import { typescript } from '@acamarata/eslint-config';
 
 export default [
   {
+    files: ['**/*.ts'],
     plugins: { '@typescript-eslint': tsPlugin },
     languageOptions: { parser: tsParser },
   },
-  ...typescript,
+  ...typescript.map((config) => ({ files: ['**/*.ts'], ...config })),
   eslintConfigPrettier,
   {
     ignores: ['dist/', 'node_modules/', 'test.mjs', 'test-cjs.cjs'],
