@@ -1,5 +1,5 @@
-import { getCalendar } from 'hijri-core';
-import { HijriCalendar } from './HijriCalendar';
+import { getCalendar } from "hijri-core";
+import { HijriCalendar } from "./HijriCalendar";
 
 /**
  * Temporal calendar implementation for the Umm al-Qura calendar.
@@ -15,6 +15,6 @@ import { HijriCalendar } from './HijriCalendar';
  */
 export class UaqCalendar extends HijriCalendar {
   constructor() {
-    super(getCalendar('uaq'));
+    super(getCalendar("uaq"));
   }
 }

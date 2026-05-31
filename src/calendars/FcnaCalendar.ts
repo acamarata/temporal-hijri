@@ -1,5 +1,5 @@
-import { getCalendar } from 'hijri-core';
-import { HijriCalendar } from './HijriCalendar';
+import { getCalendar } from "hijri-core";
+import { HijriCalendar } from "./HijriCalendar";
 
 /**
  * Temporal calendar implementation for the FCNA/ISNA calendar.
@@ -17,6 +17,6 @@ import { HijriCalendar } from './HijriCalendar';
  */
 export class FcnaCalendar extends HijriCalendar {
   constructor() {
-    super(getCalendar('fcna'));
+    super(getCalendar("fcna"));
   }
 }

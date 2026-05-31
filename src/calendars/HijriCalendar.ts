@@ -1,7 +1,7 @@
-import { Temporal } from '@js-temporal/polyfill';
-import type { CalendarEngine } from 'hijri-core';
+import { Temporal } from "@js-temporal/polyfill";
+import type { CalendarEngine } from "hijri-core";
 
-type DateUnit = 'year' | 'years' | 'month' | 'months' | 'week' | 'weeks' | 'day' | 'days';
+type DateUnit = "year" | "years" | "month" | "months" | "week" | "weeks" | "day" | "days";
 
 /** Reference year for monthDay construction when no year is specified. */
 const REFERENCE_YEAR = 1444;
@@ -109,8 +109,8 @@ export class HijriCalendar {
    * Resolve the overflow option from a Temporal options bag.
    * Returns 'constrain' (the default) or 'reject'.
    */
-  private resolveOverflow(options?: { overflow?: 'constrain' | 'reject' }): 'constrain' | 'reject' {
-    return options?.overflow ?? 'constrain';
+  private resolveOverflow(options?: { overflow?: "constrain" | "reject" }): "constrain" | "reject" {
+    return options?.overflow ?? "constrain";
   }
 
   /**
@@ -120,9 +120,9 @@ export class HijriCalendar {
     day: number,
     maxDay: number,
     month: number,
-    overflow: 'constrain' | 'reject',
+    overflow: "constrain" | "reject",
   ): number {
-    if (overflow === 'reject' && day > maxDay) {
+    if (overflow === "reject" && day > maxDay) {
       throw new RangeError(`Day ${day} exceeds ${maxDay} days in month ${month}`);
     }
     return Math.min(day, maxDay);
@@ -157,7 +157,7 @@ export class HijriCalendar {
    */
   monthCode(date: Temporal.PlainDate): string {
     const { hm } = this.toHijri(date);
-    return `M${String(hm).padStart(2, '0')}`;
+    return `M${String(hm).padStart(2, "0")}`;
   }
 
   /**
@@ -278,7 +278,7 @@ export class HijriCalendar {
 
   dateFromFields(
     fields: { year: number; month: number; day: number },
-    options?: { overflow?: 'constrain' | 'reject' },
+    options?: { overflow?: "constrain" | "reject" },
   ): Temporal.PlainDate {
     const overflow = this.resolveOverflow(options);
     const maxDay = this.engine.daysInMonth(fields.year, fields.month);
@@ -293,12 +293,12 @@ export class HijriCalendar {
    */
   yearMonthFromFields(
     fields: { year: number; month: number },
-    options?: { overflow?: 'constrain' | 'reject' },
+    options?: { overflow?: "constrain" | "reject" },
   ): Temporal.PlainYearMonth {
     const overflow = this.resolveOverflow(options);
     // Clamp month to 1-12 or reject.
     const maxMonth = 12;
-    if (overflow === 'reject' && (fields.month < 1 || fields.month > maxMonth)) {
+    if (overflow === "reject" && (fields.month < 1 || fields.month > maxMonth)) {
       throw new RangeError(`Month ${fields.month} is out of range 1-${maxMonth}`);
     }
     const month = Math.max(1, Math.min(fields.month, maxMonth));
@@ -316,7 +316,7 @@ export class HijriCalendar {
    */
   monthDayFromFields(
     fields: { month: number; day: number; year?: number },
-    options?: { overflow?: 'constrain' | 'reject' },
+    options?: { overflow?: "constrain" | "reject" },
   ): Temporal.PlainMonthDay {
     const overflow = this.resolveOverflow(options);
     const year = fields.year ?? REFERENCE_YEAR;
@@ -346,7 +346,7 @@ export class HijriCalendar {
   dateAdd(
     date: Temporal.PlainDate,
     duration: Temporal.Duration,
-    _options?: { overflow?: 'constrain' | 'reject' },
+    _options?: { overflow?: "constrain" | "reject" },
   ): Temporal.PlainDate {
     const { hy, hm, hd } = this.toHijri(date);
 
@@ -386,16 +386,16 @@ export class HijriCalendar {
     two: Temporal.PlainDate,
     options?: { largestUnit?: DateUnit },
   ): Temporal.Duration {
-    const largestUnit: DateUnit = options?.largestUnit ?? 'days';
+    const largestUnit: DateUnit = options?.largestUnit ?? "days";
 
-    if (largestUnit === 'years' || largestUnit === 'year') {
+    if (largestUnit === "years" || largestUnit === "year") {
       const h1 = this.toHijri(one);
       const h2 = this.toHijri(two);
       const diff = borrowHijriDiff(this.engine, h2.hy - h1.hy, h2.hm - h1.hm, h2.hd - h1.hd, h2);
       return new Temporal.Duration(diff.years, diff.months, 0, diff.days);
     }
 
-    if (largestUnit === 'months' || largestUnit === 'month') {
+    if (largestUnit === "months" || largestUnit === "month") {
       const h1 = this.toHijri(one);
       const h2 = this.toHijri(two);
       const diff = borrowHijriDiff(this.engine, h2.hy - h1.hy, h2.hm - h1.hm, h2.hd - h1.hd, h2);
@@ -404,11 +404,11 @@ export class HijriCalendar {
     }
 
     // For weeks and days, delegate to ISO arithmetic which is exact.
-    if (largestUnit === 'weeks' || largestUnit === 'week') {
-      return one.until(two, { largestUnit: 'weeks' });
+    if (largestUnit === "weeks" || largestUnit === "week") {
+      return one.until(two, { largestUnit: "weeks" });
     }
 
-    return one.until(two, { largestUnit: 'days' });
+    return one.until(two, { largestUnit: "days" });
   }
 
   mergeFields(
