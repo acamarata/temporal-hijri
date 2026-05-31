@@ -7,7 +7,10 @@ export default [
   {
     files: ['**/*.ts'],
     plugins: { '@typescript-eslint': tsPlugin },
-    languageOptions: { parser: tsParser },
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: { project: true, tsconfigRootDir: import.meta.dirname },
+    },
   },
   ...typescript.map((config) => ({ files: ['**/*.ts'], ...config })),
   eslintConfigPrettier,
