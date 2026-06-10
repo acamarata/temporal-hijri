@@ -263,3 +263,25 @@ describe("monthDayFromFields", () => {
     assert.ok(result);
   });
 });
+
+// ── 14. UTC-day round-trip regression ─────────────────────────────────────────
+// Verifies that ISO→Hijri→ISO is exact regardless of host timezone.
+// 2025-03-01 = 1 Ramadan 1446 AH (UAQ).
+
+describe("UTC-day round-trip regression (ISO → Hijri → ISO)", () => {
+  const isoRamadan1446 = Temporal.PlainDate.from("2025-03-01");
+
+  it("2025-03-01 maps to 1 Ramadan 1446 AH", () => {
+    assert.equal(uaqCalendar.year(isoRamadan1446), 1446);
+    assert.equal(uaqCalendar.month(isoRamadan1446), 9);
+    assert.equal(uaqCalendar.day(isoRamadan1446), 1);
+  });
+
+  it("round-trip: 1446-09-01 → ISO → Hijri returns 1446-09-01", () => {
+    const iso = uaqCalendar.dateFromFields({ year: 1446, month: 9, day: 1 });
+    assert.equal(iso.toString(), "2025-03-01");
+    assert.equal(uaqCalendar.year(iso), 1446);
+    assert.equal(uaqCalendar.month(iso), 9);
+    assert.equal(uaqCalendar.day(iso), 1);
+  });
+});

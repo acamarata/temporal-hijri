@@ -56,6 +56,17 @@ Full reference in the [wiki](https://github.com/acamarata/temporal-hijri/wiki).
 - [Architecture](https://github.com/acamarata/temporal-hijri/wiki/Architecture)
 - [Examples](https://github.com/acamarata/temporal-hijri/wiki/examples/basic-usage)
 
+## Conversion behavior
+
+Conversions between ISO and Hijri dates are pure calendar-date mappings: the same
+ISO date always maps to the same Hijri date on every machine, regardless of the host's
+timezone. `Temporal.PlainDate` carries no time-of-day information, and the underlying
+hijri-core engine operates on UTC calendar days, so there is no timezone dependency.
+
+Note: the Islamic calendar begins a new day at sunset, not midnight. This library
+follows the civil-calendar convention (midnight boundary) used by most software. Sunset
+day-start determination is out of scope.
+
 ## Related
 
 - [hijri-core](https://github.com/acamarata/hijri-core): the underlying calendar engine

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+- Date handed to hijri-core is now built via `Date.UTC()` to match hijri-core's UTC-day
+  contract; fixes previous-day results on east-of-UTC hosts (e.g. UTC+5, UTC+8).
+  Lock-step: requires the matching unreleased hijri-core fix (`fix/utc-day-boundary`).
+
 ## [1.0.2] - 2026-05-30
 
 ### Added

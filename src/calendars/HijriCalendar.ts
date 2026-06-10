@@ -70,14 +70,14 @@ export class HijriCalendar {
   /**
    * Convert a Temporal.PlainDate (ISO calendar) to Hijri coordinates.
    *
-   * Uses the local-time Date constructor so that the date components passed to
-   * the engine match the calendar date exactly, regardless of host timezone.
-   * The UAQ engine reads local components; the FCNA engine reads UTC components.
-   * Because we construct with new Date(y, m, d) the local date always matches
-   * the intended calendar date.
+   * PlainDate calendar fields are placed in the Date's UTC components via
+   * Date.UTC() because hijri-core reads the UTC calendar day. This ensures
+   * the conversion returns the correct Hijri date on every host timezone:
+   * without Date.UTC, on east-of-UTC hosts (e.g. UTC+5) the local midnight
+   * falls on the previous UTC day, causing a one-day-off result.
    */
   protected toHijri(date: Temporal.PlainDate): { hy: number; hm: number; hd: number } {
-    const jsDate = new Date(date.year, date.month - 1, date.day);
+    const jsDate = new Date(Date.UTC(date.year, date.month - 1, date.day));
     const hijri = this.engine.toHijri(jsDate);
     if (!hijri) {
       throw new RangeError(`Date ${date.toString()} is out of range for the ${this.id} calendar`);
