@@ -73,6 +73,11 @@ day-start determination is out of scope.
 - [luxon-hijri](https://github.com/acamarata/luxon-hijri): Hijri support for Luxon
 - [pray-calc](https://github.com/acamarata/pray-calc): Islamic prayer times
 
+## Telemetry
+
+This package supports opt-in anonymous usage telemetry — off by default.
+Enable: `ACAMARATA_TELEMETRY=1`. See [TELEMETRY.md](./TELEMETRY.md) for what is sent and how to disable.
+
 ## License
 
 MIT. Copyright (c) 2026 Aric Camarata. See [LICENSE](LICENSE).
