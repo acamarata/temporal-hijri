@@ -68,7 +68,7 @@
     "@acamarata/prettier-config": "^0.1.0",
     "@acamarata/tsconfig": "^0.1.0",
     "@eslint/js": "^10.0.1",
-    "@js-temporal/polyfill": "^0.4.4",
+    "@js-temporal/polyfill": "^0.5.1",
     "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
